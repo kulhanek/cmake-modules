@@ -1,5 +1,5 @@
 # ==============================================================================
-# Description: try to find fftw3 library
+# Description: try to find readline library
 #
 # Input: (optional)
 #    ReadLine_INCLUDE_PATH
