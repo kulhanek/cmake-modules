@@ -1,4 +1,4 @@
 README.md
-share/modules/FBClient.cmake
+share/modules/FindFBClient.cmake
 share/modules/FindFFTW3.cmake
 share/modules/FindReadLine.cmake
