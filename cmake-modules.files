@@ -1,4 +1,5 @@
 README.md
 share/modules/FindFBClient.cmake
 share/modules/FindFFTW3.cmake
+share/modules/FindMyBoost.cmake
 share/modules/FindReadLine.cmake
