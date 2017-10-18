@@ -2,6 +2,8 @@
 # setup project for use with IntelCDK including MKL
 # -----------------------------------------------------------------------------
 
+MESSAGE("TEST: ${LAPACK_CONFIGURED}")
+
 IF(LAPACK_CONFIGURED)
     RETURN()
 ENDIF(LAPACK_CONFIGURED)
