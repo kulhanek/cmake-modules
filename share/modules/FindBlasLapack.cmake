@@ -11,11 +11,11 @@ SET(MKL_HOME "$ENV{MKL_HOME}")
 
 IF(MKL_HOME)
     SET(MKL_FOUND TRUE)
-    LINK_DIRECTORIES(${MKL_HOME})
     SET(MKL_LIBS mkl_intel_lp64 mkl_sequential mkl_core pthread)
     MESSAGE("-- MKL HOME: ${MKL_HOME}") 
     MESSAGE("-- MKL LIBS: ${MKL_LIBS}")
     SET(LAPACK_LIB_NAME ${MKL_LIBS})
+    LINK_DIRECTORIES(${MKL_HOME}/lib/intel64)    
 ELSE(MKL_HOME)
     # BLAS ======================
     SET(BLAS_ROOT ${DEVELOPMENT_ROOT}/thirdparty/blas/netlib)
