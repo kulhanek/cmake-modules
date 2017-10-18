@@ -31,4 +31,4 @@ ENDIF(MKL_HOME)
 
 # -----------------------------------------------------------------------------
 
-SET(LAPACK_CONFIGURED TRUE CACHE INTERNAL "Is LAPACK configured?" FORCE)
+SET(LAPACK_CONFIGURED TRUE)
