@@ -30,4 +30,6 @@ IF(FCOMP_NAME STREQUAL ifort)
     SET(CMAKE_Fortran_FLAGS_DEBUG "-O0 -g -std03 -traceback -check all -warn all")
 ENDIF(FCOMP_NAME STREQUAL ifort)
 
+MESSAGE("-- FC Comp:      ${FCOMP_NAME}")
+
 SET(COMPILERS_CONFIGURED TRUE)

@@ -1,5 +1,13 @@
+share/modules/SetupCompilers.cmake
+share/modules/OpenMPI.cmake
+share/modules/IntelCDK.cmake
+share/modules/FindReadLine.cmake
 README.md
+share/modules/FindBlasLapack.cmake
+share/modules/FindFBClient.cmake
 share/modules/FindFBClient.cmake
 share/modules/FindFFTW3.cmake
+share/modules/FindFFTW3.cmake
+share/modules/FindMyBoost.cmake
 share/modules/FindMyBoost.cmake
 share/modules/FindReadLine.cmake
