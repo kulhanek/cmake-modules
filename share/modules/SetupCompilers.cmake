@@ -10,10 +10,10 @@ ENDIF(COMPILERS_CONFIGURED)
 
 # C options
 SET(CMAKE_C_FLAGS_RELEASE "-O2 -m64")
-SET(CMAKE_C_FLAGS_DEBUG "-g -m64 -Wall -Werror -pedantic-errors -Wundef -Wno-long-long")
+SET(CMAKE_C_FLAGS_DEBUG "-g -m64 -Wall -Wundef -Wno-long-long")
 # C++ options
 SET(CMAKE_CXX_FLAGS_RELEASE "-O2 -m64")
-SET(CMAKE_CXX_FLAGS_DEBUG "-O0 -m64 -g -Wall -Werror -pedantic-errors -Wundef -Wno-long-long")
+SET(CMAKE_CXX_FLAGS_DEBUG "-O0 -m64 -g -Wall -Wundef -Wno-long-long")
 # gfortran
 SET(CMAKE_Fortran_FLAGS_RELEASE "-O3 -ffree-line-length-none")
 SET(CMAKE_Fortran_FLAGS_DEBUG "-O0 -g")
