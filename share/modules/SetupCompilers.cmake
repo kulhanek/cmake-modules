@@ -27,7 +27,7 @@ ENDIF(MPI_ENABLED)
 # IntelCDK Fortran
 IF(FCOMP_NAME STREQUAL ifort)
     SET(CMAKE_Fortran_FLAGS_RELEASE "-O3 -ip -msse3 -axAVX,CORE-AVX2")
-    SET(CMAKE_Fortran_FLAGS_DEBUG "-O0 -g -std03 -traceback -check all -warn all")
+    SET(CMAKE_Fortran_FLAGS_DEBUG "-O0 -g -traceback -check all -warn all")
 ENDIF(FCOMP_NAME STREQUAL ifort)
 
 MESSAGE("-- FC Comp:      ${FCOMP_NAME}")
