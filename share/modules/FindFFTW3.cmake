@@ -20,9 +20,10 @@ FIND_PATH(FFTW3_INCLUDE_DIRS fftw3.h
 
 IF(NOT DEFINED FFTW3_FOUND)
     IF(FFTW3_INCLUDE_DIRS)
-	MESSAGE(STATUS "Looking for FFTW3 header file fftw3.h ... found: ${FFTW3_INCLUDE_DIRS}")
+	    MESSAGE(STATUS "Looking for FFTW3 header file fftw3.h ... found: ${FFTW3_INCLUDE_DIRS}")
     ELSE(FFTW3_INCLUDE_DIRS)
-	MESSAGE(STATUS "Looking for FFTW3 header file fftw3.h ... not found.")
+	    MESSAGE(STATUS "Looking for FFTW3 header file fftw3.h ... not found.")
+        SET(FFTW3_INCLUDE_DIRS "")
     ENDIF(FFTW3_INCLUDE_DIRS)
 ENDIF(NOT DEFINED FFTW3_FOUND)
 
@@ -40,11 +41,12 @@ FIND_LIBRARY(FFTW3_LIBRARY_NAME
 
 IF(NOT DEFINED FFTW3_FOUND)
     IF(FFTW3_LIBRARY_NAME)
-    GET_FILENAME_COMPONENT(FFTW3_LIB_DIRS ${FFTW3_LIBRARY_NAME} DIRECTORY)
-	MESSAGE(STATUS "Looking for FFTW3 library file fftw3 ... found: ${FFTW3_LIB_DIRS}")
+        GET_FILENAME_COMPONENT(FFTW3_LIB_DIRS ${FFTW3_LIBRARY_NAME} DIRECTORY)
+	    MESSAGE(STATUS "Looking for FFTW3 library file fftw3 ... found: ${FFTW3_LIB_DIRS}")
     ELSE(FFTW3_LIBRARY_NAME)
-	MESSAGE(STATUS "Looking for FFTW3 library file fftw3 ... not found.")
-	SET(FFTW3_LIBRARY_NAME "")
+	    MESSAGE(STATUS "Looking for FFTW3 library file fftw3 ... not found.")
+	    SET(FFTW3_LIBRARY_NAME "")
+        SET(FFTW3_LIB_DIRS "")
     ENDIF(FFTW3_LIBRARY_NAME)
 ENDIF(NOT DEFINED FFTW3_FOUND)
 

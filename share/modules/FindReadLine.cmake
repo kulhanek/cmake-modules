@@ -20,9 +20,10 @@ FIND_PATH(ReadLine_INCLUDE_DIRS readline/readline.h
 
 IF(NOT DEFINED ReadLine_FOUND)
     IF(ReadLine_INCLUDE_DIRS)
-	MESSAGE(STATUS "Looking for ReadLine header file readline.h ... found: ${ReadLine_INCLUDE_DIRS}")
+	    MESSAGE(STATUS "Looking for ReadLine header file readline.h ... found: ${ReadLine_INCLUDE_DIRS}")
     ELSE(ReadLine_INCLUDE_DIRS)
-	MESSAGE(STATUS "Looking for ReadLine header file readline.h ... not found.")
+	    MESSAGE(STATUS "Looking for ReadLine header file readline.h ... not found.")
+        SET(ReadLine_INCLUDE_DIRS "")
     ENDIF(ReadLine_INCLUDE_DIRS)
 ENDIF(NOT DEFINED ReadLine_FOUND)
 
@@ -40,11 +41,12 @@ FIND_LIBRARY(ReadLine_LIBRARY_NAME
 
 IF(NOT DEFINED ReadLine_FOUND)
     IF(ReadLine_LIBRARY_NAME)
-    GET_FILENAME_COMPONENT(ReadLine_LIB_DIRS ${ReadLine_LIBRARY_NAME} DIRECTORY)
-    MESSAGE(STATUS "Looking for ReadLine library file readline ... found: ${ReadLine_LIB_DIRS}")
+        GET_FILENAME_COMPONENT(ReadLine_LIB_DIRS ${ReadLine_LIBRARY_NAME} DIRECTORY)
+        MESSAGE(STATUS "Looking for ReadLine library file readline ... found: ${ReadLine_LIB_DIRS}")
     ELSE(ReadLine_LIBRARY_NAME)
-	MESSAGE(STATUS "Looking for ReadLine library file readline ... not found.")
-	SET(ReadLine_LIBRARY_NAME "")
+	    MESSAGE(STATUS "Looking for ReadLine library file readline ... not found.")
+	    SET(ReadLine_LIBRARY_NAME "")
+        SET(ReadLine_LIB_DIRS "")
     ENDIF(ReadLine_LIBRARY_NAME)
 ENDIF(NOT DEFINED ReadLine_FOUND)
 
