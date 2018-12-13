@@ -39,9 +39,12 @@ FIND_LIBRARY(ReadLine_LIBRARY_NAME
     $ENV{ReadLine_LIBRARY_PATH}
     )
 
+IF(ReadLine_LIBRARY_NAME)
+    GET_FILENAME_COMPONENT(ReadLine_LIB_DIRS ${ReadLine_LIBRARY_NAME} DIRECTORY)
+ENDIF(ReadLine_LIBRARY_NAME)
+
 IF(NOT DEFINED ReadLine_FOUND)
     IF(ReadLine_LIBRARY_NAME)
-        GET_FILENAME_COMPONENT(ReadLine_LIB_DIRS ${ReadLine_LIBRARY_NAME} DIRECTORY)
         MESSAGE(STATUS "Looking for ReadLine library file readline ... found: ${ReadLine_LIB_DIRS}")
     ELSE(ReadLine_LIBRARY_NAME)
 	    MESSAGE(STATUS "Looking for ReadLine library file readline ... not found.")
