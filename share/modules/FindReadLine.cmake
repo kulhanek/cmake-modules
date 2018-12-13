@@ -7,23 +7,23 @@
 #
 # Output:
 #    ReadLine_FOUND
-#    ReadLine_INCLUDE_DIR
+#    ReadLine_INCLUDE_DIRS
 #    ReadLine_LIBRARY_NAME
 #    HAVE_ReadLine
 #
 #############################################################################
 
-FIND_PATH(ReadLine_INCLUDE_DIR readline.h
-    /usr/include/readline
+FIND_PATH(ReadLine_INCLUDE_DIRS readline/readline.h
+    /usr/include
     $ENV{ReadLine_INCLUDE_PATH}
     )
 
 IF(NOT DEFINED ReadLine_FOUND)
-    IF(ReadLine_INCLUDE_DIR)
-	MESSAGE(STATUS "Looking for ReadLine header file readline.h ... found.")
-    ELSE(ReadLine_INCLUDE_DIR)
+    IF(ReadLine_INCLUDE_DIRS)
+	MESSAGE(STATUS "Looking for ReadLine header file readline.h ... found: ${ReadLine_INCLUDE_DIRS}")
+    ELSE(ReadLine_INCLUDE_DIRS)
 	MESSAGE(STATUS "Looking for ReadLine header file readline.h ... not found.")
-    ENDIF(ReadLine_INCLUDE_DIR)
+    ENDIF(ReadLine_INCLUDE_DIRS)
 ENDIF(NOT DEFINED ReadLine_FOUND)
 
 FIND_LIBRARY(ReadLine_LIBRARY_NAME
@@ -40,7 +40,8 @@ FIND_LIBRARY(ReadLine_LIBRARY_NAME
 
 IF(NOT DEFINED ReadLine_FOUND)
     IF(ReadLine_LIBRARY_NAME)
-	MESSAGE(STATUS "Looking for ReadLine library file readline ... found.")
+    GET_FILENAME_COMPONENT(ReadLine_LIB_DIRS ${ReadLine_LIBRARY_NAME} DIRECTORY)
+    MESSAGE(STATUS "Looking for ReadLine library file readline ... found: ${ReadLine_LIB_DIRS}")
     ELSE(ReadLine_LIBRARY_NAME)
 	MESSAGE(STATUS "Looking for ReadLine library file readline ... not found.")
 	SET(ReadLine_LIBRARY_NAME "")
@@ -49,13 +50,13 @@ ENDIF(NOT DEFINED ReadLine_FOUND)
 
 # ------------------------------------------------------------------------------
 
-IF(ReadLine_INCLUDE_DIR AND ReadLine_LIBRARY_NAME)
+IF(ReadLine_INCLUDE_DIRS AND ReadLine_LIBRARY_NAME)
     SET(ReadLine_FOUND TRUE CACHE INTERNAL "ReadLine library" FORCE)
     SET(HAVE_ReadLine 1)
     ADD_DEFINITIONS(-DHAVE_ReadLine)
-ELSE(ReadLine_INCLUDE_DIR AND ReadLine_LIBRARY_NAME)
+ELSE(ReadLine_INCLUDE_DIRS AND ReadLine_LIBRARY_NAME)
     SET(ReadLine_FOUND FALSE CACHE INTERNAL "ReadLine library" FORCE)
-ENDIF(ReadLine_INCLUDE_DIR AND ReadLine_LIBRARY_NAME)
+ENDIF(ReadLine_INCLUDE_DIRS AND ReadLine_LIBRARY_NAME)
 
 IF(ReadLine_FIND_REQUIRED)
     IF(NOT ReadLine_FOUND)
