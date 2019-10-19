@@ -12,6 +12,7 @@ SET(MKL_MODE "$ENV{MKL_MODE}")
 
 IF(MKL_HOME)
     SET(MKL_FOUND TRUE)
+     ADD_DEFINITIONS(-DHAVE_MKL)
     if(MKL_MODE STREQUAL "parallel")
         ADD_DEFINITIONS(-DHAVE_MKL_PARALLEL)
         SET(MKL_LIBS mkl_intel_lp64 mkl_intel_thread mkl_core iomp5 pthread)
