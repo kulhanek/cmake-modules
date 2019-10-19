@@ -23,6 +23,7 @@ IF(MKL_HOME)
     MESSAGE("-- MKL HOME: ${MKL_HOME}")
     MESSAGE("-- MKL LIBS: ${MKL_LIBS}")
     SET(LAPACK_LIB_NAME ${MKL_LIBS})
+    INCLUDE_DIRECTORIES(${MKL_HOME}/include)
     LINK_DIRECTORIES(${MKL_HOME}/lib/intel64)    
 ELSE(MKL_HOME)
     # BLAS ======================
