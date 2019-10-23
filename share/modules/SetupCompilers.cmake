@@ -30,6 +30,18 @@ IF(FCOMP_NAME STREQUAL ifort)
     SET(CMAKE_Fortran_FLAGS_DEBUG "-O0 -g -traceback -check all -warn all")
 ENDIF(FCOMP_NAME STREQUAL ifort)
 
+# is MKL in 64bit mode?
+IF(MKL_ILP64)
+    INCLUDE(CheckFortranCompilerFlag)
+    CHECK_FORTRAN_COMPILER_FLAG("-i8" FortranI8)
+    IF(FortranI8)
+        SET(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -i8")
+    ELSE()
+        MESSAGE(FATAL_ERROR "MKL_ILP64 but -i8 is not supported by fortran compiler!")
+    ENDIF()
+ENDIF()
+
 MESSAGE("-- FC Comp:      ${FCOMP_NAME}")
+MESSAGE("-- FC Flags:     ${CMAKE_Fortran_FLAGS}")
 
 SET(COMPILERS_CONFIGURED TRUE)
