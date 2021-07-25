@@ -39,16 +39,25 @@ IF(MKL_HOME)
     INCLUDE_DIRECTORIES(${MKL_HOME}/include)
     LINK_DIRECTORIES(${MKL_HOME}/lib/intel64)    
 ELSE(MKL_HOME)
-    # BLAS ======================
-    SET(BLAS_ROOT ${DEVELOPMENT_ROOT}/thirdparty/blas/netlib)
-    LINK_DIRECTORIES(${BLAS_ROOT}/lib)
-    SET(BLAS_LIB_NAME fblasd)
+    # try system Lapack and Blas
+    FIND_PACKAGE(BLAS)
+    FIND_PACKAGE(LAPACK)
+    IF( BLAS_FOUND AND LAPACK_FOUND )
+        MESSAGE("-- BLAS/LAPACK: ${BLAS_LIBRARIES} ${LAPACK_LIBRARIES}") 
+        SET(BLAS_LIB_NAME ${BLAS_LIBRARIES})
+        SET(LAPACK_LIB_NAME ${LAPACK_LIBRARIES})
+    ELSE( BLAS_FOUND AND LAPACK_FOUND )
+        # BLAS ======================
+        SET(BLAS_ROOT ${DEVELOPMENT_ROOT}/thirdparty/blas/netlib)
+        LINK_DIRECTORIES(${BLAS_ROOT}/lib)
+        SET(BLAS_LIB_NAME fblasd)
 
-    # LAPACK =====================
-    SET(LAPACK_ROOT ${DEVELOPMENT_ROOT}/thirdparty/lapack/3.1.1)
-    LINK_DIRECTORIES(${LAPACK_ROOT}/lib)
-    SET(LAPACK_LIB_NAME flapackd)
-    MESSAGE("-- MKL LIBS: fallback blas/netlib and lapack/3.1.1")
+        # LAPACK =====================
+        SET(LAPACK_ROOT ${DEVELOPMENT_ROOT}/thirdparty/lapack/3.1.1)
+        LINK_DIRECTORIES(${LAPACK_ROOT}/lib)
+        SET(LAPACK_LIB_NAME flapackd)
+        MESSAGE("-- BLAS/LAPACK: fallback blas/netlib and lapack/3.1.1")    
+    ENDIF( BLAS_FOUND AND LAPACK_FOUND )
 ENDIF(MKL_HOME)
 
 # -----------------------------------------------------------------------------
